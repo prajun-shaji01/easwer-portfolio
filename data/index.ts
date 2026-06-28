@@ -20,11 +20,12 @@ export const gridItems = [
   {
     id: 2,
     title:
-      "Specializing in high-end cinematic production and remote post-production services.",
+      "Specializing in high-end commercial advertisements and event celebration.",
     description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+    className: "lg:col-span-2 md:col-span-2 text-sm md:row-span-2",
     imgClassName: "",
-    titleClassName: "justify-start",
+    // Added 'text-sm' to make it smaller and 'line-clamp-3' to force 3 lines
+    titleClassName: "justify-start -mt-4 text-sm line-clamp-3",
     img: "",
     spareImg: "",
   },
@@ -135,27 +136,13 @@ export const testimonials = [
 export const workExperience = [
   {
     id: 1,
-    title: "Director of Photography",
-    desc: "Lead camera operator and lighting director for multiple indie short films and high-end corporate interviews.",
-    className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
-  },
-  {
-    id: 2,
     title: "Lead Video Editor",
-    desc: "Edited commercials, music videos, and social media content utilizing Premiere Pro and DaVinci Resolve.",
+    desc: "Produced and edited digital advertisements and high-energy celebration videos using professional post-production software.",
     className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
-    id: 3,
-    title: "Colorist & VFX Artist",
-    desc: "Performed advanced color correction, grading, and motion tracking for various agency clients.",
-    className: "md:col-span-2",
-    thumbnail: "/exp3.svg",
-  },
-  {
-    id: 4,
+    id: 2,
     title: "Freelance Videographer",
     desc: "Managed end-to-end video production from storyboarding and location scouting to final delivery.",
     className: "md:col-span-2",

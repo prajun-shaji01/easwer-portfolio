@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
-
-// Also install this npm i --save-dev @types/react-lottie
 import Lottie from "react-lottie";
-
 import { cn } from "@/lib/utils";
-
 import { BackgroundGradientAnimation } from "./GradientBg";
 import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
@@ -49,24 +45,19 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  // Updated software stack
-  const leftLists = ["Premiere Pro", "After Effects", "Resolve"];
-  const rightLists = ["Cinema 4D", "Audition", "Photoshop"];
-
+  const leftLists = ["Premiere Pro", "After Effects", "Lightroom"];
+  const rightLists = ["Photoshop"];
   const [copied, setCopied] = useState(false);
 
   const defaultOptions = {
     loop: copied,
     autoplay: copied,
     animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
+    rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
   };
 
   const handleCopy = () => {
-    const text = "easwersfc@gmail.com";
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText("easwersfc@gmail.com");
     setCopied(true);
   };
 
@@ -88,14 +79,12 @@ export const BentoGridItem = ({
             <img
               src={img}
               alt={img}
-              className={cn(imgClassName, "object-cover object-center ")}
+              className={cn(imgClassName, "object-cover object-center")}
             />
           )}
         </div>
         <div
-          className={`absolute right-0 -bottom-5 ${
-            id === 5 && "w-full opacity-80"
-          } `}
+          className={`absolute right-0 -bottom-5 ${id === 5 && "w-full opacity-80"}`}
         >
           {spareImg && (
             <img
@@ -111,24 +100,22 @@ export const BentoGridItem = ({
           </BackgroundGradientAnimation>
         )}
 
+        {/* UPDATED: Changed padding to justify-start and added pt-2 to shift text higher */}
         <div
           className={cn(
             titleClassName,
-            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10",
+            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 pt-2 lg:pt-5 lg:px-10 justify-start",
           )}
         >
           <div className="font-sans font-extralight md:max-w-32 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
             {description}
           </div>
-          <div
-            className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10`}
-          >
+          <div className="font-sans text-lg lg:text-3xl max-w-96 font-bold z-10">
             {title}
           </div>
 
           {id === 2 && <GridGlobe />}
 
-          {/* Fixed Alignment for Tech Stack */}
           {id === 3 && (
             <div className="flex flex-wrap gap-2 lg:gap-3 mt-5 z-10">
               {leftLists.concat(rightLists).map((item, i) => (
@@ -144,14 +131,9 @@ export const BentoGridItem = ({
 
           {id === 6 && (
             <div className="mt-5 relative z-10">
-              <div
-                className={`absolute -bottom-5 right-0 ${
-                  copied ? "block" : "block"
-                }`}
-              >
+              <div className="absolute -bottom-5 right-0">
                 <Lottie options={defaultOptions} height={200} width={400} />
               </div>
-
               <MagicButton
                 title={copied ? "Email is Copied!" : "Copy my email address"}
                 icon={<IoCopyOutline />}

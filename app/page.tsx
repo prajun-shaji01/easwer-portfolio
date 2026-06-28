@@ -3,11 +3,11 @@
 import dynamic from "next/dynamic";
 import { navItems } from "@/data";
 
-// Keep simple components imported normally
+// Core components that don't need dynamic imports
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 
-// Dynamically import components that use browser features (like window/document/3D)
+// Dynamic imports to prevent "document is not defined" server errors
 const Grid = dynamic(() => import("@/components/Grid"), { ssr: false });
 const RecentProjects = dynamic(() => import("@/components/RecentProjects"), {
   ssr: false,
@@ -25,7 +25,10 @@ const FloatingNav = dynamic(
 const Home = () => {
   return (
     <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-      <div className="max-w-7xl w-full">
+      {/* The z-20 here ensures the text content stays on top of any 
+        background graphics or VFX components.
+      */}
+      <div className="relative z-20 max-w-7xl w-full">
         <FloatingNav navItems={navItems} />
         <Hero />
         <Grid />
